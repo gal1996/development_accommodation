@@ -11,16 +11,17 @@ MEMBER_NAME = [
 ]
 
 class predict:
-    def loadModel():
+    def loadModel(self):
         fileName = "model.pkl"
         clf = pickle.load(open(fileName, 'rb'))
+        print(clf)
         return clf
 
-    def makeTestData(rowData):
+    def makeTestData(self,rowData):
         makeTestData = pd.read_json(rowData)
         return makeTestData
 
-    def execPredict(clf, testData):
+    def execPredict(self, clf, testData):
         score = clf.predict(testData)
         result = pd.dataFrame(
                     data=score,
