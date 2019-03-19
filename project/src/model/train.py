@@ -32,7 +32,7 @@ def makeTrainData():
     #データ形成
     y_data = pd.DataFrame(
         data=data,
-        columns=['laughStd', 'rareEncountPoint', 'takenPictureWithManyPeaple', 'takeGoodPicturePoint',
+        columns=['smileStd', 'rareEncountPoint', 'takenPictureWithManyPeaple', 'takeGoodPicturePoint',
                 'betweenProductInteractPoint', 'diversityPoint'])
     #投票により得られた得点
     y_label = [10, 6, 8, 5, 6, 7, 6, 12, 9, 9, 8, 4, 2, 5, 3, 0, 2, 0, 1, 0]

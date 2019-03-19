@@ -3,7 +3,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
-@app.route('/', methods['POST'])
+@app.route('/score', methods['POST'])
 def execPredict():
     title='classify'
     if request.method = 'POST':
