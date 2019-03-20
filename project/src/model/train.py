@@ -11,6 +11,7 @@ import pickle
 import json
 from dataAugmentation import DataAugmentation
 
+
 class train:
     def makeTrainData(self):
         #得られたデータ
@@ -83,16 +84,18 @@ class train:
         d = DataAugmentation()
         data = d.makeNewFeature(trainData)
         data = d.execStd(data)
+        data = d.execPca(data)
 
-        clf1 = KNeighborsRegressor(n_neighbors=2)
-        clf2 = LogisticRegression()
-        clf3 = SVR()
-        sclf = StackingRegressor(regressors=[clf1, clf2, clf3], meta_regressor=clf1)
-        fittedClf = self.execTrain(sclf, data, trainLabel)
+        rgs1 = KNeighborsRegressor(n_neighbors=2)
+        rgs2 = LogisticRegression()
+        rgs3 = SVR()
 
-        self.saveModel(fittedClf)
+        srgs = StackingRegressor(regressors=[rgs1, rgs2, rgs3], meta_regressor=rgs1)
+        fittedRgs = self.execTrain(srgs, data, trainLabel)
 
-        self.execCrossValidate(fittedClf, data, trainLabel)
+        self.saveModel(fittedRgs)
+
+        self.execCrossValidate(fittedRgs, data, trainLabel)
 
     def execTrain(self, clf, trainData, trainLabel):
         clf.fit(trainData, trainLabel)

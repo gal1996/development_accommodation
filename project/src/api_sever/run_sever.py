@@ -13,6 +13,7 @@ def execPredict():
         if request.method == 'POST':
                 testData = request.json['data']
                 model = estimator()
+                testData = model.transformData(testData)
                 score = model.execPredict(testData)
 
         return score
