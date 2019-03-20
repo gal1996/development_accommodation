@@ -1,18 +1,22 @@
+import sys
+sys.path.append('..')
+
 from flask import Flask, request
 import pandas as pd
+from model.predict import estimator
 
 app = Flask(__name__)
 
-@app.route('/score', methods['POST'])
+@app.route('/score', methods=['POST'])
 def execPredict():
     title='classify'
-    if request.method = 'POST':
-        jsonData = request.json()
-        testData = parseJson2Dataframe(jsonData)
+    if request.method == 'POST':
+        testData = request.json['data']
+        print(testData)
+        model = estimator()
+        score = model.execPredict(testData)
 
-def parseJson2Dataframe(jsonData):
-    data = pd.read_json(jsonData)
-    return data
+        return score
 
-if __name__='__main__':
-    app.run(debug=True, host='0.0.0.0', port=8888, threaded=True)
+if __name__ == '__main__':
+    app.run(debug=True, host='localhost', port=5000, threaded=True)
