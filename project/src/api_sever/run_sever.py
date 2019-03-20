@@ -9,14 +9,13 @@ app = Flask(__name__)
 
 @app.route('/score', methods=['POST'])
 def execPredict():
-    title='classify'
-    if request.method == 'POST':
-        testData = request.json['data']
-        print(testData)
-        model = estimator()
-        score = model.execPredict(testData)
+        title='classify'
+        if request.method == 'POST':
+                testData = request.json['data']
+                model = estimator()
+                score = model.execPredict(testData)
 
         return score
 
 if __name__ == '__main__':
-    app.run(debug=True, host='localhost', port=5000, threaded=True)
+        app.run(debug=True, host='localhost', port=5000, threaded=True)
