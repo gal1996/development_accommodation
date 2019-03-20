@@ -3,6 +3,7 @@ from sklearn.model_selection import KFold, cross_validate
 import pandas as pd
 import numpy as np
 import pickle
+import json
 
 class train:
     def makeTrainData(self):
@@ -37,6 +38,7 @@ class train:
                     'betweenProductInteractPoint', 'diversityPoint'])
         #投票により得られた得点
         y_label = [10, 6, 8, 5, 6, 7, 6, 12, 9, 9, 8, 4, 2, 5, 3, 0, 2, 0, 1, 0]
+        y_dict = {}
 
         return y_data, y_label
 
